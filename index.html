@@ -137,6 +137,14 @@ transform:translateY(100vh);
 }
 }
 
+/* RODAPÉ */
+
+footer{
+margin-top:60px;
+font-size:12px;
+opacity:0.8;
+}
+
 </style>
 </head>
 
@@ -170,72 +178,31 @@ Estamos juntos há<br>
 </div>
 
 <div class="texto">
-Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia. Você não é apenas a minha melhor escolha, você é o porto seguro onde meu coração decidiu pousar.
-Olhar para nós e para o que estamos construindo me emociona profundamente. Mas o que me tira o fôlego não é apenas o "nós", é a mulher monumental e extraordinária que você se revela a cada dia. Sua força não é barulhenta, ela é constante, a sua sabedoria guia nossos passos e o seu jeito de enfrentar as adversidades com esse seu "jeitinho" único me faz te admirar como nunca admirei ninguém.
-Minha Mulher-Maravilha, ter você ao meu lado não é sorte, é o maior privilégio da minha existência. 
-Eu amo você além das palavras, em cada detalhe do agora e em todos os sonhos que ainda vamos tirar do papel. Obrigado por ser você e, unicamente, você! ❤️
+Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia...
 </div>
 
 <h2>Nossos Momentos 📸</h2>
 
 <div class="galeria">
 
-<div class="foto">
-<img src="w1.jpeg">
-<p>Nossa primeira foto juntos</p>
-</div>
-
-<div class="foto">
-<img src="w2.jpeg">
-<p>Um dia simples que virou lembrança</p>
-</div>
-
-<div class="foto">
-<img src="w3.jpeg">
-<p>Sua beleza radiante</p>
-</div>
-
-<div class="foto">
-<img src="w4.jpeg">
-<p>Tentando imitar figurinha kkk</p>
-</div>
-
-<div class="foto">
-<img src="w5.jpeg">
-<p>Sem reação segundos antes</p>
-</div>
-
-<div class="foto">
-<img src="w6.jpeg">
-<p>Eu escolheria você mil vezes</p>
-</div>
-
-<div class="foto">
-<img src="w7.jpeg">
-<p>Mais um capítulo da nossa história</p>
-</div>
-
-<div class="foto">
-<img src="w8.jpeg">
-<p>Momentos simples que valem tudo</p>
-</div>
-
-<div class="foto">
-<img src="w9.jpeg">
-<p>Seu abraço é meu lugar favorito</p>
-</div>
-
-<div class="foto">
-<img src="w10.jpeg">
-<p>Te amar é a melhor parte do meu dia</p>
-</div>
-
-<div class="foto">
-<img src="w11.jpeg">
-<p>Nossa história está só começando ❤️</p>
-</div>
+<div class="foto"><img src="w1.jpeg"><p>Nossa primeira foto juntos</p></div>
+<div class="foto"><img src="w2.jpeg"><p>Um dia simples que virou lembrança</p></div>
+<div class="foto"><img src="w3.jpeg"><p>Sua beleza radiante</p></div>
+<div class="foto"><img src="w4.jpeg"><p>Tentando imitar figurinha kkk</p></div>
+<div class="foto"><img src="w5.jpeg"><p>Sem reação segundos antes</p></div>
+<div class="foto"><img src="w6.jpeg"><p>Eu escolheria você mil vezes</p></div>
+<div class="foto"><img src="w7.jpeg"><p>Mais um capítulo da nossa história</p></div>
+<div class="foto"><img src="w8.jpeg"><p>Momentos simples que valem tudo</p></div>
+<div class="foto"><img src="w9.jpeg"><p>Seu abraço é meu lugar favorito</p></div>
+<div class="foto"><img src="w10.jpeg"><p>Te amar é a melhor parte do meu dia</p></div>
+<div class="foto"><img src="w11.jpeg"><p>Nossa história está só começando ❤️</p></div>
 
 </div>
+
+<footer>
+Contato: tioze.jmps@gmail.com
+</footer>
+
 </div>
 
 <script>
@@ -275,7 +242,7 @@ dias+" dias "+horas+"h "+minutos+"m "+segundos+"s";
 
 setInterval(atualizarContador,1000);
 
-/* TITULO DINAMICO */
+/* TITULO CORRIGIDO */
 
 function atualizarTitulo(){
 
@@ -285,38 +252,21 @@ let meses =
 (agora.getFullYear() - dataInicio.getFullYear()) * 12 +
 (agora.getMonth() - dataInicio.getMonth());
 
-let frase="";
-
-if(meses==0){
-frase="Feliz Nosso Primeiro Mês Meu Amor ❤️";
-}
-else if(meses==1){
-frase="Feliz 2 Meses de Amor ❤️";
-}
-else if(meses==2){
-frase="3 Meses Juntos Meu Amor ❤️";
-}
-else if(meses==3){
-frase="4 Meses de Nós Dois ❤️";
-}
-else if(meses==4){
-frase="5 Meses de Amor ❤️";
-}
-else if(meses==5){
-frase="Meio Ano Com Você ❤️";
-}
-else if(meses>=11){
-frase="1 Ano do Nosso Amor ❤️";
-}
-else{
-frase=(meses+1)+" Meses de Nós Dois ❤️";
+/* CORREÇÃO PRINCIPAL */
+if(agora.getDate() < 9){
+meses--;
 }
 
-document.getElementById("titulo").innerText=frase;
+/* começa sempre em 1 mês */
+let mesesMostrar = meses + 1;
+
+document.getElementById("titulo").innerText =
+"Feliz Seja Nosso "+mesesMostrar+" Mês Amor ❤️";
 
 }
 
-setInterval(atualizarTitulo,1000);
+atualizarTitulo();
+setInterval(atualizarTitulo,3600000);
 
 /* CORAÇÕES */
 
@@ -344,7 +294,6 @@ setInterval(criarCoracao,300);
 
 </body>
 </html>
-
 
 
 
