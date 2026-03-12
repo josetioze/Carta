@@ -1,15 +1,8 @@
 QUE SEJAMOS FELIZES MEU CUSCUZ
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z456KM4HBN"></script>
-<script>
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
-gtag('config', 'G-Z456KM4HBN');
-</script>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,12 +12,27 @@ gtag('config', 'G-Z456KM4HBN');
 <style>
 
 body{
-background:#d8c3a5;
-font-family: Arial;
+background:#0f172a;
+font-family:Arial;
 text-align:center;
 margin:0;
 color:white;
 overflow-x:hidden;
+}
+
+/* ESTRELAS */
+
+.star{
+position:fixed;
+background:white;
+width:2px;
+height:2px;
+animation:piscar 2s infinite alternate;
+}
+
+@keyframes piscar{
+from{opacity:0.2;}
+to{opacity:1;}
 }
 
 /* CARTA */
@@ -35,12 +43,13 @@ top:0;
 left:0;
 width:100%;
 height:100vh;
-background:#d8c3a5;
+background:#0f172a;
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 z-index:10;
+transition:1s;
 }
 
 #carta button{
@@ -60,6 +69,12 @@ max-width:900px;
 margin:auto;
 padding:20px;
 display:none;
+animation:fade 2s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 h1{
@@ -74,6 +89,8 @@ animation:pulse 2s infinite;
 100%{transform:scale(1);}
 }
 
+/* CONTADOR */
+
 #contador{
 background:white;
 color:#ff4d6d;
@@ -82,43 +99,37 @@ border-radius:20px;
 font-size:1.5em;
 margin:30px auto;
 width:80%;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
+
+/* TEXTO */
 
 .texto{
 font-size:1.2em;
 margin:30px;
+line-height:1.6em;
 }
 
-/* GALERIA */
+/* SLIDESHOW */
 
 .galeria{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:40px;
-margin-top:30px;
+position:relative;
+max-width:500px;
+margin:auto;
 }
 
-.foto{
-width:80%;
-max-width:400px;
+.slide{
+display:none;
 }
 
-.foto img{
+.slide img{
 width:100%;
 border-radius:15px;
-box-shadow:0 8px 15px rgba(0,0,0,0.2);
-transition:0.3s;
+box-shadow:0 8px 20px rgba(0,0,0,0.4);
 }
 
-.foto img:hover{
-transform:scale(1.05);
-}
-
-.foto p{
+.slide p{
 margin-top:10px;
-font-size:1.1em;
 }
 
 /* CORAÇÕES */
@@ -126,23 +137,23 @@ font-size:1.1em;
 .heart{
 position:fixed;
 top:-10px;
-color:red;
+color:#ff4d6d;
 font-size:20px;
 animation:fall linear infinite;
 }
 
 @keyframes fall{
-to{
-transform:translateY(100vh);
-}
+to{transform:translateY(100vh);}
 }
 
-/* RODAPÉ */
+/* EMAIL */
 
-footer{
-margin-top:60px;
-font-size:12px;
-opacity:0.8;
+.email{
+position:fixed;
+bottom:10px;
+right:15px;
+font-size:11px;
+opacity:0.7;
 }
 
 </style>
@@ -173,36 +184,56 @@ Abrir Carta ❤️
 <h1 id="titulo"></h1>
 
 <div id="contador">
-Estamos juntos há<br>
+❤️ Estamos juntos há ❤️ <br>
 <b id="tempo"></b>
 </div>
 
 <div class="texto">
-Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia...
+Como já te falei, "o tempo é o nosso bem mais precioso".  
+Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia.  
+Você não é apenas a minha melhor escolha, você é o porto seguro onde meu coração decidiu pousar. ❤️
 </div>
 
 <h2>Nossos Momentos 📸</h2>
 
 <div class="galeria">
 
-<div class="foto"><img src="w1.jpeg"><p>Nossa primeira foto juntos</p></div>
-<div class="foto"><img src="w2.jpeg"><p>Um dia simples que virou lembrança</p></div>
-<div class="foto"><img src="w3.jpeg"><p>Sua beleza radiante</p></div>
-<div class="foto"><img src="w4.jpeg"><p>Tentando imitar figurinha kkk</p></div>
-<div class="foto"><img src="w5.jpeg"><p>Sem reação segundos antes</p></div>
-<div class="foto"><img src="w6.jpeg"><p>Eu escolheria você mil vezes</p></div>
-<div class="foto"><img src="w7.jpeg"><p>Mais um capítulo da nossa história</p></div>
-<div class="foto"><img src="w8.jpeg"><p>Momentos simples que valem tudo</p></div>
-<div class="foto"><img src="w9.jpeg"><p>Seu abraço é meu lugar favorito</p></div>
-<div class="foto"><img src="w10.jpeg"><p>Te amar é a melhor parte do meu dia</p></div>
-<div class="foto"><img src="w11.jpeg"><p>Nossa história está só começando ❤️</p></div>
+<div class="slide">
+<img src="w1.jpeg">
+<p>Nossa primeira foto juntos</p>
+</div>
+
+<div class="slide">
+<img src="w2.jpeg">
+<p>Um dia simples que virou lembrança</p>
+</div>
+
+<div class="slide">
+<img src="w3.jpeg">
+<p>Sua beleza radiante</p>
+</div>
+
+<div class="slide">
+<img src="w4.jpeg">
+<p>Tentando imitar figurinha kkk</p>
+</div>
+
+<div class="slide">
+<img src="w5.jpeg">
+<p>Sem reação segundos antes</p>
+</div>
+
+<div class="slide">
+<img src="w6.jpeg">
+<p>Eu escolheria você mil vezes</p>
+</div>
 
 </div>
 
-<footer>
-Contato: tioze.jmps@gmail.com
-</footer>
+</div>
 
+<div class="email">
+contato: tioze.jmps@gmail.com
 </div>
 
 <script>
@@ -215,11 +246,14 @@ const dataInicio = new Date(2026,1,9);
 
 function abrirCarta(){
 
+document.getElementById("carta").style.opacity="0";
+
+setTimeout(()=>{
 document.getElementById("carta").style.display="none";
 document.getElementById("site").style.display="block";
+},800);
 
-let musica = document.getElementById("musica");
-musica.play();
+document.getElementById("musica").play();
 
 }
 
@@ -242,26 +276,49 @@ dias+" dias "+horas+"h "+minutos+"m "+segundos+"s";
 
 setInterval(atualizarContador,1000);
 
-/* TITULO CORRIGIDO */
+/* TITULO CORRETO */
 
 function atualizarTitulo(){
 
 const agora = new Date();
 
 let meses =
-(agora.getFullYear() - dataInicio.getFullYear()) * 12 +
-(agora.getMonth() - dataInicio.getMonth());
+(agora.getFullYear()-dataInicio.getFullYear())*12+
+(agora.getMonth()-dataInicio.getMonth());
 
-/* CORREÇÃO PRINCIPAL */
-if(agora.getDate() < 9){
+if(agora.getDate()<9){
 meses--;
 }
 
-/* começa sempre em 1 mês */
-let mesesMostrar = meses + 1;
+if(meses<0){
+meses=0;
+}
 
-document.getElementById("titulo").innerText =
-"Feliz Seja Nosso "+mesesMostrar+" Mês Amor ❤️";
+let frase="";
+
+if(meses==12){
+
+frase="Hoje celebramos 1 ano de amor ❤️";
+explosaoDeCoracoes();
+
+}
+else if(meses==0){
+
+frase="Rumo ao Nosso Primeiro Mês Amor ❤️";
+
+}
+else if(meses==1){
+
+frase="Feliz Nosso 1 Mês Amor ❤️";
+
+}
+else{
+
+frase="Feliz Nosso "+meses+" Meses Amor ❤️";
+
+}
+
+document.getElementById("titulo").innerText=frase;
 
 }
 
@@ -273,6 +330,7 @@ setInterval(atualizarTitulo,3600000);
 function criarCoracao(){
 
 const heart=document.createElement("div");
+
 heart.classList.add("heart");
 
 heart.innerHTML="❤️";
@@ -282,20 +340,81 @@ heart.style.animationDuration=(Math.random()*3+2)+"s";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{
-heart.remove();
-},5000)
+setTimeout(()=>{heart.remove();},5000);
 
 }
 
 setInterval(criarCoracao,300);
 
+/* EXPLOSAO 1 ANO */
+
+function explosaoDeCoracoes(){
+
+for(let i=0;i<120;i++){
+
+setTimeout(()=>{
+
+const heart=document.createElement("div");
+
+heart.innerHTML="❤️";
+
+heart.style.position="fixed";
+heart.style.left=Math.random()*100+"vw";
+heart.style.top=Math.random()*100+"vh";
+heart.style.fontSize="30px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},4000);
+
+},i*30);
+
+}
+
+}
+
+/* ESTRELAS */
+
+for(let i=0;i<120;i++){
+
+const star=document.createElement("div");
+
+star.classList.add("star");
+
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(star);
+
+}
+
+/* SLIDESHOW */
+
+let slideIndex=0;
+
+function mostrarSlides(){
+
+let slides=document.getElementsByClassName("slide");
+
+for(let i=0;i<slides.length;i++){
+slides[i].style.display="none";
+}
+
+slideIndex++;
+
+if(slideIndex>slides.length){
+slideIndex=1;
+}
+
+slides[slideIndex-1].style.display="block";
+
+setTimeout(mostrarSlides,4000);
+
+}
+
+mostrarSlides();
+
 </script>
 
 </body>
 </html>
-
-
-
-
-
