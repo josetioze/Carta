@@ -1,9 +1,7 @@
 QUE SEJAMOS FELIZES MEU CUSCUZ
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -71,9 +69,11 @@ animation:fall linear forwards;
 }
 
 @keyframes fall{
+
 to{
 transform:translateY(110vh);
 }
+
 }
 
 </style>
@@ -83,7 +83,6 @@ transform:translateY(110vh);
 
 
 <!-- CARTA -->
-
 <div id="carta">
 
 <h1>Tenho algo para você ❤️</h1>
@@ -95,9 +94,7 @@ Abrir
 </div>
 
 
-
 <!-- SITE -->
-
 <div id="site">
 
 <h1 id="titulo"></h1>
@@ -111,13 +108,11 @@ Abrir
 </div>
 
 
-
 <script>
 
 /* DATA INICIO */
 
 const dataInicio = new Date(2026,1,9);
-
 
 
 /* ABRIR CARTA */
@@ -133,7 +128,6 @@ let musica=document.getElementById("musica");
 musica.play();
 
 }
-
 
 
 /* CONTADOR */
@@ -167,33 +161,45 @@ segundos+"s";
 setInterval(atualizarContador,1000);
 
 
-
-/* TITULO CORRIGIDO */
+/* TITULO */
 
 function atualizarTitulo(){
 
 const agora=new Date();
 
-let meses = 
-(agora.getFullYear()-dataInicio.getFullYear())*12 +
+let meses=
+
+(agora.getFullYear()-dataInicio.getFullYear())*12+
+
 (agora.getMonth()-dataInicio.getMonth());
 
-if(agora.getDate() < 9){
+if(agora.getDate()<dataInicio.getDate()){
+
 meses--;
+
 }
 
-/* começa em 1 mês */
-let mesesExibidos = meses + 1;
+let frase="";
 
-document.getElementById("titulo").innerText =
-"Feliz Seja Nosso " + mesesExibidos + " Mês Amor ❤️";
+if(meses<=1){
+
+frase="Feliz Seja Nosso 1 Mês Amor ❤️";
+
+}
+
+else{
+
+frase="Feliz "+meses+" Meses de Amor ❤️";
+
+}
+
+document.getElementById("titulo").innerText=frase;
 
 }
 
 atualizarTitulo();
 
 setInterval(atualizarTitulo,3600000);
-
 
 
 /* CORAÇÕES */
