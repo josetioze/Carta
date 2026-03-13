@@ -1,78 +1,218 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosso Universo</title>
-    <style>
-        body { margin: 0; font-family: sans-serif; background: #0f172a; color: white; text-align: center; }
-        #carta { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: #0f172a; display: flex; justify-content: center; align-items: center; flex-direction: column; z-index: 999; }
-        #menu { display: none; background: #1e293b; padding: 15px; position: sticky; top: 0; z-index: 100; border-bottom: 2px solid #ff4d6d; }
-        button { background: #ff4d6d; color: white; border: none; padding: 15px; border-radius: 10px; cursor: pointer; margin: 5px; font-weight: bold; }
-        .pagina { display: none; padding: 20px; animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        .slide { display: none; }
-        img, video { width: 90%; max-width: 500px; border-radius: 15px; border: 3px solid #ff4d6d; }
-    </style>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nosso Universo ❤️</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+/* CARTA */
+
+#carta{
+position:fixed;
+width:100%;
+height:100vh;
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:10;
+}
+
+#carta button{
+font-size:22px;
+padding:20px 40px;
+border:none;
+border-radius:20px;
+background:#ff4d6d;
+color:white;
+cursor:pointer;
+}
+
+/* MENU */
+
+#menu{
+display:none;
+background:#111827;
+padding:20px;
+}
+
+#menu button{
+margin:10px;
+padding:15px 25px;
+border:none;
+border-radius:15px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+/* PAGINAS */
+
+.pagina{
+display:none;
+padding:30px;
+max-width:900px;
+margin:auto;
+}
+
+/* TEXTO */
+
+.texto{
+font-size:1.2em;
+margin:30px;
+line-height:1.6em;
+}
+
+/* SLIDES */
+
+.slide{
+display:none;
+}
+
+.slide img,
+.slide video{
+width:100%;
+max-width:600px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+</style>
+
 </head>
+
 <body>
 
-    <div id="carta">
-        <h2>💌 Tenho algo para você...</h2>
-        <button onclick="abrirSite()">Abrir ❤️</button>
-    </div>
+<!-- CARTA -->
 
-    <div id="menu">
-        <button onclick="abrirPagina('historia')">História</button>
-        <button onclick="abrirPagina('croche')">Crochê</button>
-        <button onclick="abrirPagina('sonho')">Sonhos</button>
-    </div>
+<div id="carta">
 
-    <div class="pagina" id="historia">
-        <h1>Nossa História ❤️</h1>
-        <p>Que sejamos felizes meu cuscuz!</p>
-        <div class="slide s1"><img src="w1.jpeg"></div>
-        <div class="slide s1"><img src="w2.jpeg"></div>
-    </div>
+<h2>💌 Tenho algo para você...</h2>
 
-    <div class="pagina" id="croche">
-        <h1>Seu Talento 🧶</h1>
-        <div class="slide s2"><img src="c1.jpeg"></div>
-    </div>
+<button id="abrirBtn">
+Abrir ❤️
+</button>
 
-    <div class="pagina" id="sonho">
-        <h1>Vamos Sonhar ✨</h1>
-    </div>
+</div>
 
-    <script>
-        function abrirSite() {
-            document.getElementById("carta").style.display = "none";
-            document.getElementById("menu").style.display = "block";
-            abrirPagina('historia');
-        }
+<!-- MENU -->
 
-        function abrirPagina(id) {
-            let p = document.getElementsByClassName("pagina");
-            for (let i = 0; i < p.length; i++) p[i].style.display = "none";
-            document.getElementById(id).style.display = "block";
-        }
+<div id="menu">
 
-        function rodarSlides(classe) {
-            let index = 0;
-            setInterval(() => {
-                let slides = document.getElementsByClassName(classe);
-                if(slides.length > 0) {
-                    for(let s of slides) s.style.display = "none";
-                    index = (index + 1) % slides.length;
-                    slides[index].style.display = "block";
-                }
-            }, 4000);
-        }
+<button onclick="abrirPagina('historia')">
+1 - Veja nossa história
+</button>
 
-        window.onload = () => {
-            rodarSlides('s1');
-            rodarSlides('s2');
-        };
-    </script>
+<button onclick="abrirPagina('croche')">
+2 - Tenho algo para você
+</button>
+
+<button onclick="abrirPagina('sonho')">
+3 - Vamos sonhar
+</button>
+
+</div>
+
+<!-- HISTORIA -->
+
+<div class="pagina" id="historia">
+
+<h1>Nossa História ❤️</h1>
+
+<div class="texto">
+
+QUE SEJAMOS FELIZES MEU CUSCUZ
+
+<br><br>
+
+Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia. Você não é apenas a minha melhor escolha, você é o porto seguro onde meu coração decidiu pousar.
+
+Olhar para nós e para o que estamos construindo me emociona profundamente. Mas o que me tira o fôlego não é apenas o "nós", é a mulher monumental e extraordinária que você se revela a cada dia. Sua força não é barulhenta, ela é constante, a sua sabedoria guia nossos passos e o seu jeito de enfrentar as adversidades com esse seu "jeitinho" único me faz te admirar como nunca admirei ninguém.
+
+Minha Mulher-Maravilha, ter você ao meu lado não é sorte, é o maior privilégio da minha existência.
+
+Eu amo você além das palavras, em cada detalhe do agora e em todos os sonhos que ainda vamos tirar do papel. Obrigado por ser você e, unicamente, você!❤️
+
+</div>
+
+</div>
+
+<!-- CROCHE -->
+
+<div class="pagina" id="croche">
+
+<h1>O Encanto do Crochê</h1>
+
+<div class="texto">
+
+MEU CUSCUZ, FIZ PARA VOCÊ PODER TER UMA ADMIRAÇÃO 
+DE SUAS QUALIDADES QUANDO NÃO ESTIVER NO SEU MELHOR ASTRAL. 
+Aproveita Bjssss
+
+<br><br>
+
+Falam que o artesanato é a linguagem do coração, agora, vendo o que você cria, eu acredito nisso. Ver você concentrada, transformando um simples novelo de lã em algo tão lindo e cheio de vida, me faz admirar você ainda mais.
+
+Que esse dom continue florescendo, porque sua criatividade não tem limites. Continue tecendo seus sonhos, ponto por ponto, proguedindo de maneira constante, saiba que eu estarei sempre aqui na primeira fila, aplaudindo, pulando e gritando "bota cuscuz" a cada criação.
+
+Aqui é um pequeno retrato visual para eu e você poder admirar com mais facilidade.
+
+</div>
+
+</div>
+
+<!-- SONHO -->
+
+<div class="pagina" id="sonho">
+
+<h1>Vamos Sonhar ✨</h1>
+
+<p>Aqui você pode colocar outro slideshow ou planos para o futuro.</p>
+
+</div>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+document.getElementById("abrirBtn").onclick=function(){
+
+document.getElementById("carta").style.display="none";
+document.getElementById("menu").style.display="block";
+
+};
+
+});
+
+function abrirPagina(id){
+
+let paginas=document.getElementsByClassName("pagina");
+
+for(let i=0;i<paginas.length;i++){
+paginas[i].style.display="none";
+}
+
+document.getElementById(id).style.display="block";
+
+}
+
+</script>
+
 </body>
 </html>
