@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
 
 <meta charset="UTF-8">
@@ -71,6 +70,16 @@ max-width:900px;
 margin:auto;
 }
 
+/* PAGINA HISTORIA FUNDO BEGE */
+
+#historia{
+background:#d8c3a5;
+color:white;
+position:relative;
+overflow:hidden;
+min-height:100vh;
+}
+
 /* TEXTO */
 
 .texto{
@@ -91,6 +100,38 @@ width:100%;
 max-width:600px;
 border-radius:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* CORAÇÕES */
+
+.heart{
+position:fixed;
+top:-10px;
+color:red;
+font-size:20px;
+animation:fall linear infinite;
+z-index:2;
+}
+
+@keyframes fall{
+to{
+transform:translateY(100vh);
+}
+}
+
+/* ESTRELAS */
+
+.star{
+position:fixed;
+color:white;
+font-size:10px;
+animation:twinkle 2s infinite alternate;
+z-index:1;
+}
+
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
 }
 
 </style>
@@ -196,19 +237,10 @@ MEU CUSCUZ, FIZ PARA VOCÊ PODER TER UMA ADMIRAÇÃO
 DE SUAS QUALIDADES QUANDO NÃO ESTIVER NO SEU MELHOR ASTRAL. 
 Aproveita Bjssss
 
-<br><br>
-
-Falam que o artesanato é a linguagem do coração, agora, vendo o que você cria, eu acredito nisso. Ver você concentrada, transformando um simples novelo de lã em algo tão lindo e cheio de vida, me faz admirar você ainda mais.
-
-Que esse dom continue florescendo, porque sua criatividade não tem limites. Continue tecendo seus sonhos, ponto por ponto, proguedindo de maneira constante, saiba que eu estarei sempre aqui na primeira fila, aplaudindo, pulando e gritando "bota cuscuz" a cada criação.
-
-Aqui é um pequeno retrato visual para eu e você poder admirar com mais facilidade.
-
 </div>
 
 <div class="slide crocheSlide">
 <img src="c1.jpeg">
-<p>Todo grande trabalho começa com um simples fio e dedicação.</p>
 </div>
 
 <div class="slide crocheSlide">
@@ -219,17 +251,14 @@ Aqui é um pequeno retrato visual para eu e você poder admirar com mais facilid
 
 <div class="slide crocheSlide">
 <img src="c2.jpeg">
-<p>Entre os simples fios e o tempo nasce algo único.</p>
 </div>
 
 <div class="slide crocheSlide">
 <img src="c3.jpeg">
-<p>Em cada ponto, um detalhe de elegância; em cada pétala, um carinho que nunca murcha.</p>
 </div>
 
 <div class="slide crocheSlide">
 <img src="c4.jpeg">
-<p>Nenhum mestre começou pelo topo. Esse buquê é a prova de que você se desafiou, e para mim, ele é uma obra de arte, porque foi feito por você.</p>
 </div>
 
 </div>
@@ -246,11 +275,11 @@ Aqui é um pequeno retrato visual para eu e você poder admirar com mais facilid
 
 <!-- MUSICAS -->
 
-<audio id="musica" loop preload="auto">
+<audio id="musica" loop>
 <source src="musica.mp3" type="audio/mpeg">
 </audio>
 
-<audio id="musica2" loop preload="auto">
+<audio id="musica2" loop>
 <source src="musica2.mp3" type="audio/mpeg">
 </audio>
 
@@ -275,26 +304,18 @@ for(let i=0;i<paginas.length;i++){
 paginas[i].style.display="none";
 }
 
-/* esconder menu */
-
 document.getElementById("menu").style.display="none";
-
-/* parar musicas */
 
 let m1=document.getElementById("musica");
 let m2=document.getElementById("musica2");
 
 m1.pause();
-m1.currentTime=0;
-
 m2.pause();
+
+m1.currentTime=0;
 m2.currentTime=0;
 
-/* mostrar pagina */
-
 document.getElementById(id).style.display="block";
-
-/* tocar musica */
 
 if(id==="historia"){
 m1.play();
@@ -357,6 +378,60 @@ setTimeout(slidesCroche,8000);
 }
 
 slidesCroche();
+
+/* CORAÇÕES */
+
+function criarCoracao(){
+
+if(document.getElementById("historia").style.display !== "block") return;
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+
+heart.remove();
+
+},5000)
+
+}
+
+setInterval(criarCoracao,300);
+
+/* ESTRELAS */
+
+function criarEstrelas(){
+
+for(let i=0;i<80;i++){
+
+let star=document.createElement("div");
+
+star.classList.add("star");
+
+star.innerHTML="✦";
+
+star.style.left=Math.random()*100+"vw";
+
+star.style.top=Math.random()*100+"vh";
+
+star.style.animationDuration=(Math.random()*3+1)+"s";
+
+document.body.appendChild(star);
+
+}
+
+}
+
+criarEstrelas();
 
 </script>
 
