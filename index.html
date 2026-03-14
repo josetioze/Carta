@@ -9,6 +9,10 @@
 
 <style>
 
+/* ============================= */
+/* CONFIGURAÇÃO GERAL */
+/* ============================= */
+
 body{
 margin:0;
 font-family:Arial;
@@ -18,7 +22,9 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* CARTA */
+/* ============================= */
+/* CARTA INICIAL */
+/* ============================= */
 
 #carta{
 position:fixed;
@@ -42,7 +48,9 @@ color:white;
 cursor:pointer;
 }
 
+/* ============================= */
 /* MENU */
+/* ============================= */
 
 #menu{
 display:none;
@@ -61,7 +69,9 @@ font-size:16px;
 cursor:pointer;
 }
 
+/* ============================= */
 /* PAGINAS */
+/* ============================= */
 
 .pagina{
 display:none;
@@ -70,7 +80,9 @@ max-width:900px;
 margin:auto;
 }
 
-/* PAGINA HISTORIA FUNDO BEGE */
+/* ============================= */
+/* PAGINA HISTORIA (FUNDO BEGE) */
+/* ============================= */
 
 #historia{
 background:#d8c3a5;
@@ -88,7 +100,9 @@ margin:30px;
 line-height:1.6em;
 }
 
+/* ============================= */
 /* SLIDES */
+/* ============================= */
 
 .slide{
 display:none;
@@ -102,7 +116,9 @@ border-radius:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* CORAÇÕES */
+/* ============================= */
+/* CORAÇÕES (PAGINA 1) */
+/* ============================= */
 
 .heart{
 position:fixed;
@@ -119,7 +135,9 @@ transform:translateY(100vh);
 }
 }
 
+/* ============================= */
 /* ESTRELAS */
+/* ============================= */
 
 .star{
 position:fixed;
@@ -134,12 +152,93 @@ from{opacity:0.2;}
 to{opacity:1;}
 }
 
+/* ============================= */
+/* FUNDO CROCHE (PAGINA 2) */
+/* ============================= */
+
+#croche{
+background:linear-gradient(135deg,#2e7d32,#4caf50,#a5d6a7);
+color:white;
+position:relative;
+overflow:hidden;
+min-height:100vh;
+}
+
+/* FIOS COSTURANDO */
+
+#fio1,#fio2{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:0;
+}
+
+.fio{
+stroke:#f5deb3;
+stroke-width:4;
+fill:none;
+stroke-dasharray:2000;
+stroke-dashoffset:2000;
+}
+
+.fio1{
+animation:costurar1 18s linear infinite;
+}
+
+.fio2{
+animation:costurar2 20s linear infinite;
+}
+
+@keyframes costurar1{
+to{stroke-dashoffset:0;}
+}
+
+@keyframes costurar2{
+to{stroke-dashoffset:0;}
+}
+
+/* BRILHOS */
+
+.brilho{
+position:fixed;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+opacity:0.8;
+animation:brilhar linear infinite;
+pointer-events:none;
+}
+
+@keyframes brilhar{
+
+0%{
+transform:translateY(110vh);
+opacity:0;
+}
+
+50%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-10vh);
+opacity:0;
+}
+
+}
+
 </style>
 </head>
 
 <body>
 
-<!-- CARTA -->
+<!-- ============================= -->
+<!-- CARTA INICIAL -->
+<!-- ============================= -->
 
 <div id="carta">
 
@@ -151,7 +250,9 @@ Abrir ❤️
 
 </div>
 
+<!-- ============================= -->
 <!-- MENU -->
+<!-- ============================= -->
 
 <div id="menu">
 
@@ -169,7 +270,9 @@ Abrir ❤️
 
 </div>
 
+<!-- ============================= -->
 <!-- PAGINA HISTORIA -->
+<!-- ============================= -->
 
 <div class="pagina" id="historia">
 
@@ -181,13 +284,7 @@ QUE SEJAMOS FELIZES MEU CUSCUZ
 
 <br><br>
 
-Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia. Você não é apenas a minha melhor escolha, você é o porto seguro onde meu coração decidiu pousar.
-
-Olhar para nós e para o que estamos construindo me emociona profundamente. Mas o que me tira o fôlego não é apenas o "nós", é a mulher monumental e extraordinária que você se revela a cada dia. Sua força não é barulhenta, ela é constante, a sua sabedoria guia nossos passos e o seu jeito de enfrentar as adversidades com esse seu "jeitinho" único me faz te admirar como nunca admirei ninguém.
-
-Minha Mulher-Maravilha, ter você ao meu lado não é sorte, é o maior privilégio da minha existência.
-
-Eu amo você além das palavras, em cada detalhe do agora e em todos os sonhos que ainda vamos tirar do papel. Obrigado por ser você e, unicamente, você!❤️
+Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia.
 
 </div>
 
@@ -195,47 +292,64 @@ Eu amo você além das palavras, em cada detalhe do agora e em todos os sonhos q
 
 <div class="slide historiaSlide">
 <img src="w1.jpeg">
-<p>Nossa primeira foto juntos</p>
 </div>
 
 <div class="slide historiaSlide">
 <img src="w2.jpeg">
-<p>Um dia simples que virou lembrança</p>
 </div>
 
 <div class="slide historiaSlide">
 <img src="w3.jpeg">
-<p>Sua beleza radiante</p>
 </div>
 
 <div class="slide historiaSlide">
 <img src="w4.jpeg">
-<p>Tentando imitar figurinha kkk</p>
 </div>
 
 <div class="slide historiaSlide">
 <img src="w5.jpeg">
-<p>Sem reação segundos antes</p>
 </div>
 
 <div class="slide historiaSlide">
 <img src="w6.jpeg">
-<p>Eu escolheria você mil vezes</p>
 </div>
 
 </div>
 
+<!-- ============================= -->
 <!-- PAGINA CROCHE -->
+<!-- ============================= -->
 
 <div class="pagina" id="croche">
+
+<!-- FIOS COSTURANDO -->
+
+<svg id="fio1">
+<path class="fio fio1" d="
+M0 200
+Q200 50 400 200
+T800 200
+T1200 300
+T1600 200
+"/>
+</svg>
+
+<svg id="fio2">
+<path class="fio fio2" d="
+M1600 400
+Q1400 250 1200 400
+T800 400
+T400 500
+T0 400
+"/>
+</svg>
 
 <h1>O Encanto do Crochê</h1>
 
 <div class="texto">
 
 MEU CUSCUZ, FIZ PARA VOCÊ PODER TER UMA ADMIRAÇÃO 
-DE SUAS QUALIDADES QUANDO NÃO ESTIVER NO SEU MELHOR ASTRAL. 
-Aproveita Bjssss
+DE SUAS QUALIDADES QUANDO NÃO ESTIVER NO SEU MELHOR ASTRAL.
 
 </div>
 
@@ -263,29 +377,33 @@ Aproveita Bjssss
 
 </div>
 
+<!-- ============================= -->
 <!-- PAGINA SONHO -->
+<!-- ============================= -->
 
 <div class="pagina" id="sonho">
 
 <h1>Vamos Sonhar ✨</h1>
 
-<p>Aqui você pode colocar outro slideshow ou planos para o futuro.</p>
+<p>Aqui você pode colocar seus planos futuros.</p>
 
 </div>
 
 <!-- MUSICAS -->
 
 <audio id="musica" loop>
-<source src="musica.mp3" type="audio/mpeg">
+<source src="musica.mp3">
 </audio>
 
 <audio id="musica2" loop>
-<source src="musica2.mp3" type="audio/mpeg">
+<source src="musica2.mp3">
 </audio>
 
 <script>
 
+/* ============================= */
 /* ABRIR SITE */
+/* ============================= */
 
 function abrirSite(){
 
@@ -294,7 +412,9 @@ document.getElementById("menu").style.display="block";
 
 }
 
+/* ============================= */
 /* ABRIR PAGINA */
+/* ============================= */
 
 function abrirPagina(id){
 
@@ -317,17 +437,14 @@ m2.currentTime=0;
 
 document.getElementById(id).style.display="block";
 
-if(id==="historia"){
-m1.play();
-}
-
-if(id==="croche"){
-m2.play();
-}
+if(id==="historia") m1.play();
+if(id==="croche") m2.play();
 
 }
 
+/* ============================= */
 /* SLIDES HISTORIA */
+/* ============================= */
 
 let slideHistoria=0;
 
@@ -353,7 +470,9 @@ setTimeout(slidesHistoria,8000);
 
 slidesHistoria();
 
+/* ============================= */
 /* SLIDES CROCHE */
+/* ============================= */
 
 let slideCroche=0;
 
@@ -379,7 +498,9 @@ setTimeout(slidesCroche,8000);
 
 slidesCroche();
 
-/* CORAÇÕES */
+/* ============================= */
+/* CORAÇÕES PAGINA 1 */
+/* ============================= */
 
 function criarCoracao(){
 
@@ -397,17 +518,15 @@ heart.style.animationDuration=(Math.random()*3+2)+"s";
 
 document.body.appendChild(heart);
 
-setTimeout(()=>{
-
-heart.remove();
-
-},5000)
+setTimeout(()=>{heart.remove();},5000)
 
 }
 
 setInterval(criarCoracao,300);
 
+/* ============================= */
 /* ESTRELAS */
+/* ============================= */
 
 function criarEstrelas(){
 
@@ -432,6 +551,30 @@ document.body.appendChild(star);
 }
 
 criarEstrelas();
+
+/* ============================= */
+/* BRILHOS PAGINA CROCHE */
+/* ============================= */
+
+function criarBrilhos(){
+
+if(document.getElementById("croche").style.display !== "block") return;
+
+let brilho=document.createElement("div");
+
+brilho.className="brilho";
+
+brilho.style.left=Math.random()*100+"vw";
+
+brilho.style.animationDuration=(Math.random()*10+5)+"s";
+
+document.body.appendChild(brilho);
+
+setTimeout(()=>{brilho.remove();},15000)
+
+}
+
+setInterval(criarBrilhos,300);
 
 </script>
 
