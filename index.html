@@ -9,9 +9,7 @@
 
 <style>
 
-/* ============================= */
 /* CONFIGURAÇÃO GERAL */
-/* ============================= */
 
 body{
 margin:0;
@@ -22,9 +20,7 @@ text-align:center;
 overflow-x:hidden;
 }
 
-/* ============================= */
 /* CARTA INICIAL */
-/* ============================= */
 
 #carta{
 position:fixed;
@@ -48,9 +44,7 @@ color:white;
 cursor:pointer;
 }
 
-/* ============================= */
 /* MENU */
-/* ============================= */
 
 #menu{
 display:none;
@@ -69,9 +63,7 @@ font-size:16px;
 cursor:pointer;
 }
 
-/* ============================= */
 /* PAGINAS */
-/* ============================= */
 
 .pagina{
 display:none;
@@ -80,9 +72,7 @@ max-width:900px;
 margin:auto;
 }
 
-/* ============================= */
 /* PAGINA HISTORIA (FUNDO BEGE) */
-/* ============================= */
 
 #historia{
 background:#d8c3a5;
@@ -100,9 +90,7 @@ margin:30px;
 line-height:1.6em;
 }
 
-/* ============================= */
 /* SLIDES */
-/* ============================= */
 
 .slide{
 display:none;
@@ -116,9 +104,7 @@ border-radius:15px;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
-/* ============================= */
 /* CORAÇÕES (PAGINA 1) */
-/* ============================= */
 
 .heart{
 position:fixed;
@@ -135,9 +121,7 @@ transform:translateY(100vh);
 }
 }
 
-/* ============================= */
 /* ESTRELAS */
-/* ============================= */
 
 .star{
 position:fixed;
@@ -152,9 +136,7 @@ from{opacity:0.2;}
 to{opacity:1;}
 }
 
-/* ============================= */
 /* FUNDO CROCHE (PAGINA 2) */
-/* ============================= */
 
 #croche{
 background:linear-gradient(135deg,#2e7d32,#4caf50,#a5d6a7);
@@ -236,9 +218,7 @@ opacity:0;
 
 <body>
 
-<!-- ============================= -->
 <!-- CARTA INICIAL -->
-<!-- ============================= -->
 
 <div id="carta">
 
@@ -250,9 +230,7 @@ Abrir ❤️
 
 </div>
 
-<!-- ============================= -->
 <!-- MENU -->
-<!-- ============================= -->
 
 <div id="menu">
 
@@ -270,9 +248,7 @@ Abrir ❤️
 
 </div>
 
-<!-- ============================= -->
 <!-- PAGINA HISTORIA -->
-<!-- ============================= -->
 
 <div class="pagina" id="historia">
 
@@ -284,7 +260,10 @@ QUE SEJAMOS FELIZES MEU CUSCUZ
 
 <br><br>
 
-Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia.
+Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e saber que iniciei o ciclo de uma vida inteira com você me traz uma felicidade que eu não sabia que existia. Você não é apenas a minha melhor escolha, você é o porto seguro onde meu coração decidiu pousar.
+Olhar para nós e para o que estamos construindo me emociona profundamente. Mas o que me tira o fôlego não é apenas o "nós", é a mulher monumental e extraordinária que você se revela a cada dia. Sua força não é barulhenta, ela é constante, a sua sabedoria guia nossos passos e o seu jeito de enfrentar as adversidades com esse seu "jeitinho" único me faz te admirar como nunca admirei ninguém.
+Minha Mulher-Maravilha, ter você ao meu lado não é sorte, é o maior privilégio da minha existência. 
+Eu amo você além das palavras, em cada detalhe do agora e em todos os sonhos que ainda vamos tirar do papel. Obrigado por ser você e, unicamente, você!❤️
 
 </div>
 
@@ -292,6 +271,7 @@ Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e sab
 
 <div class="slide historiaSlide">
 <img src="w1.jpeg">
+<p>Nossa primeira foto juntos</p>
 </div>
 
 <div class="slide historiaSlide">
@@ -316,9 +296,7 @@ Como já te falei, "o tempo é o nosso bem mais precioso". Olhar para 2026 e sab
 
 </div>
 
-<!-- ============================= -->
 <!-- PAGINA CROCHE -->
-<!-- ============================= -->
 
 <div class="pagina" id="croche">
 
@@ -377,9 +355,7 @@ DE SUAS QUALIDADES QUANDO NÃO ESTIVER NO SEU MELHOR ASTRAL.
 
 </div>
 
-<!-- ============================= -->
 <!-- PAGINA SONHO -->
-<!-- ============================= -->
 
 <div class="pagina" id="sonho">
 
@@ -401,9 +377,7 @@ DE SUAS QUALIDADES QUANDO NÃO ESTIVER NO SEU MELHOR ASTRAL.
 
 <script>
 
-/* ============================= */
 /* ABRIR SITE */
-/* ============================= */
 
 function abrirSite(){
 
@@ -412,9 +386,7 @@ document.getElementById("menu").style.display="block";
 
 }
 
-/* ============================= */
 /* ABRIR PAGINA */
-/* ============================= */
 
 function abrirPagina(id){
 
@@ -442,9 +414,7 @@ if(id==="croche") m2.play();
 
 }
 
-/* ============================= */
 /* SLIDES HISTORIA */
-/* ============================= */
 
 let slideHistoria=0;
 
@@ -470,9 +440,7 @@ setTimeout(slidesHistoria,8000);
 
 slidesHistoria();
 
-/* ============================= */
 /* SLIDES CROCHE */
-/* ============================= */
 
 let slideCroche=0;
 
@@ -498,9 +466,7 @@ setTimeout(slidesCroche,8000);
 
 slidesCroche();
 
-/* ============================= */
 /* CORAÇÕES PAGINA 1 */
-/* ============================= */
 
 function criarCoracao(){
 
@@ -524,9 +490,7 @@ setTimeout(()=>{heart.remove();},5000)
 
 setInterval(criarCoracao,300);
 
-/* ============================= */
 /* ESTRELAS */
-/* ============================= */
 
 function criarEstrelas(){
 
@@ -552,9 +516,7 @@ document.body.appendChild(star);
 
 criarEstrelas();
 
-/* ============================= */
 /* BRILHOS PAGINA CROCHE */
-/* ============================= */
 
 function criarBrilhos(){
 
