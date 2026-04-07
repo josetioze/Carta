@@ -816,10 +816,30 @@ let totalVirados=0;
 const totalCards=document.querySelectorAll('.card-flip').length;
 
 function virarCard(el){
-  if(!el.classList.contains('virado')){
+
+  // Se ainda NÃO abriu todos
+  if(totalVirados < totalCards){
+
+    // Fecha todos os outros
+    document.querySelectorAll('.card-flip').forEach(c=>{
+      if(c !== el){
+        c.classList.remove('virado');
+      }
+    });
+
+    // Se o card ainda não foi visto
+    if(!el.dataset.visto){
+      el.dataset.visto = "true";
+      totalVirados++;
+    }
+
+    // Abre o card atual
     el.classList.add('virado');
-    totalVirados++;
-    if(totalVirados===totalCards) mostrarMensagem();
+
+    // Se chegou no último → abre todos
+    if(totalVirados === totalCards){
+      revelarTodos();
+    }
   }
 }
 
