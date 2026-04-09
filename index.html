@@ -382,7 +382,28 @@ body{
   90% { opacity:1; }
   100%{ transform:translateY(105vh) rotate(360deg); opacity:0; }
 }
+/* SUBMENU HISTORIA */
+#submenu-historia{
+  margin:20px;
+}
 
+#submenu-historia button{
+  margin:10px;
+  padding:12px 20px;
+  border:none;
+  border-radius:15px;
+  background:#ff4d6d;
+  color:white;
+  cursor:pointer;
+}
+
+/* MÊS ATUAL AMARELO */
+#mesAtual{
+  background:#FFD54F; /* amarelo */
+  color:black;
+  padding:20px;
+  border-radius:20px;
+}
 </style>
 </head>
 
@@ -421,7 +442,15 @@ body{
   </div>
 
   <h2>Nossos Momentos 📸</h2>
+    <!-- SUBMENU HISTORIA -->
+<div id="submenu-historia">
+  <button onclick="abrirMes('mes1')">📅 Primeiro Mês</button>
+  <button onclick="abrirMes('mesAtual')">⭐ Mês Atual</button>
+</div>
 
+  <!-- PRIMEIRO MÊS (ORIGINAL) -->
+<div id="mes1" class="mes-historia">
+    
   <div class="slide historiaSlide">
     <img src="w1.jpeg">
     <p>Nossa primeira foto juntos</p>
@@ -448,6 +477,27 @@ body{
   </div>
 </div>
 
+<!-- MÊS ATUAL -->
+<div id="mesAtual" class="mes-historia" style="display:none;">
+
+  <h2>Nosso Mês Atual ⭐</h2>
+
+  <div class="slide historiaSlideAtual">
+    <img src="t1.jpeg">
+    <p>Mais um momento especial juntos ❤️</p>
+  </div>
+
+  <div class="slide historiaSlideAtual">
+    <img src="t2.jpeg">
+    <p>Cada mês com você é único ✨</p>
+  </div>
+
+  <div class="slide historiaSlideAtual">
+    <img src="t3.jpeg">
+    <p>Nosso amor crescendo 💛</p>
+  </div>
+
+</div>
 <!-- PAGINA CROCHE -->
 <div class="pagina" id="croche">
 
@@ -724,6 +774,9 @@ function abrirPagina(id){
   if(id==="croche")   m2.play();
   if(id==="sonho")    m3.play();
   if(id==="razoes")   m4.play();
+    <audio id="musica01" loop>
+  <source src="musica01.mp3">
+</audio>
 
   /* Resetar cards de razões ao reabrir */
  if(id==="razoes"){
@@ -737,6 +790,19 @@ function abrirPagina(id){
 }
 }
 
+/* ===== SUBMENU MESES ===== */
+
+function abrirMes(id){
+
+  let meses=document.getElementsByClassName("mes-historia");
+
+  for(let i=0;i<meses.length;i++){
+    meses[i].style.display="none";
+  }
+
+  document.getElementById(id).style.display="block";
+
+}
 /* ===== SLIDES HISTÓRIA ===== */
 let slideHistoria=0;
 function slidesHistoria(){
@@ -748,7 +814,29 @@ function slidesHistoria(){
   setTimeout(slidesHistoria,8000);
 }
 slidesHistoria();
+/* ===== SLIDES MÊS ATUAL ===== */
 
+let slideAtual=0;
+
+function slidesAtual(){
+
+  let slides=document.getElementsByClassName("historiaSlideAtual");
+
+  for(let i=0;i<slides.length;i++)
+    slides[i].style.display="none";
+
+  slideAtual++;
+
+  if(slideAtual>slides.length)
+    slideAtual=1;
+
+  if(slides.length>0)
+    slides[slideAtual-1].style.display="block";
+
+  setTimeout(slidesAtual,8000);
+}
+
+slidesAtual();
 /* ===== SLIDES CROCHÊ ===== */
 let slideCroche=0;
 function slidesCroche(){
