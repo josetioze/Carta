@@ -808,31 +808,34 @@ function abrirSite(){
 
 /* ===== ABRIR PÁGINA ===== */
 function abrirPagina(id){
+
   let paginas = document.getElementsByClassName("pagina");
-  for(let i=0; i<paginas.length; i++) paginas[i].style.display = "none";
+  for(let i=0; i<paginas.length; i++){
+    paginas[i].style.display = "none";
+  }
+
   document.getElementById("menu").style.display = "none";
 
-  // Pegar referências das músicas
+  // Músicas
   let m1 = document.getElementById("musica");
   let m2 = document.getElementById("musica2");
   let m3 = document.getElementById("musica3");
   let m4 = document.getElementById("musica4");
-
-  // Parar todas
   [m1, m2, m3, m4].forEach(m => { 
-    if(m) { m.pause(); m.currentTime = 0; } 
+    if(m){ m.pause(); m.currentTime = 0; } 
   });
-
   // Mostrar página
   document.getElementById(id).style.display = "block";
-
-  // Tocar música
+  // Tocar música da página
   if(id === "historia") m1.play().catch(()=>{});
   if(id === "croche")   m2.play().catch(()=>{});
   if(id === "sonho")    m3.play().catch(()=>{});
   if(id === "razoes")   m4.play().catch(()=>{});
-
-  /* ✅ RESET CORRETO (AGORA DENTRO DA FUNÇÃO) */
+  // ✅ HISTORIA (fora do razoes)
+  if(id === "historia"){
+    abrirMes('mes1');
+  }
+  // ✅ RESET DOS CARDS (somente razoes)
   if(id === "razoes"){
     document.querySelectorAll('.card-flip').forEach(c => {
       c.classList.remove('virado');
@@ -841,12 +844,8 @@ function abrirPagina(id){
     totalVirados = 0;
     document.getElementById('btn-revelar').style.display = 'block';
     document.getElementById('mensagem-final').style.display = 'none';
-   if(id === "historia"){
-  abrirMes('mes1'); // começa mostrando o primeiro mês
-} 
   }
 }
-   
 
 /* ===== SUBMENU MESES ===== */
 
