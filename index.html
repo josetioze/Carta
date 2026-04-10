@@ -856,13 +856,15 @@ function abrirPagina(id){
   }
 
   /* HISTÓRIA: NÃO MOSTRAR NENHUM MÊS */
-  if(id === "historia"){
+ if(id === "historia"){
+  // Esconde todos os meses
   let meses = document.getElementsByClassName("mes-historia");
   for(let i=0;i<meses.length;i++){
     meses[i].style.display = "none";
   }
-  }
-    document.getElementById("conteudoHistoria").style.display = "none";
+  // MOSTRA apenas o topo (contador + botões)
+  document.getElementById("conteudoHistoria").style.display = "none";
+}
 }
 /* ===== SUBMENU MESES ===== */
 
@@ -872,7 +874,7 @@ function abrirMes(id){
   for(let i=0;i<meses.length;i++){
     meses[i].style.display="none";
   }
-
+document.getElementById("conteudoHistoria").style.display = "block";
   document.getElementById(id).style.display="block";
 
   // música
