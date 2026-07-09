@@ -665,6 +665,123 @@ body{
   cursor:pointer;
 }
     
+
+/* ===== ABA NOSSO FILME ===== */
+#filme{
+  min-height:100vh;
+  padding:40px 18px 70px;
+  background:
+    radial-gradient(circle at top,#ff4d6d 0%,#831843 35%,#1e1b4b 72%,#020617 100%);
+  color:white;
+  position:relative;
+  overflow:hidden;
+  max-width:100%;
+  box-sizing:border-box;
+}
+
+#filme::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 20%,rgba(255,255,255,0.18),transparent 25%),
+    radial-gradient(circle at 80% 10%,rgba(244,114,182,0.25),transparent 30%),
+    radial-gradient(circle at 50% 90%,rgba(255,77,109,0.22),transparent 35%);
+  pointer-events:none;
+}
+
+#filme h1{
+  position:relative;
+  z-index:2;
+  color:#ffe4e6;
+  font-size:2.2em;
+  text-shadow:0 0 22px rgba(255,255,255,0.35),0 0 28px #f472b6;
+  margin-bottom:12px;
+}
+
+.filme-subtitulo{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin:0 auto 22px;
+  color:#fce7f3;
+  font-size:1.05em;
+  line-height:1.7;
+  opacity:0.95;
+}
+
+.filme-caixa{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin:28px auto;
+  padding:18px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.25);
+  box-shadow:0 18px 50px rgba(0,0,0,0.50), 0 0 30px rgba(244,114,182,0.25);
+  backdrop-filter:blur(8px);
+}
+
+.video-filme{
+  width:100%;
+  max-height:78vh;
+  background:#000;
+  border-radius:22px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.55);
+  border:2px solid rgba(255,255,255,0.25);
+  outline:none;
+}
+
+.filme-texto{
+  position:relative;
+  z-index:2;
+  max-width:760px;
+  margin:25px auto 0;
+  padding:25px;
+  border-radius:24px;
+  background:linear-gradient(135deg,rgba(255,255,255,0.15),rgba(255,255,255,0.05));
+  border:1px solid rgba(255,255,255,0.18);
+  color:#fff1f2;
+  font-size:1.08em;
+  line-height:1.8;
+  box-shadow:0 10px 30px rgba(0,0,0,0.35);
+}
+
+.filme-detalhe{
+  color:#fbcfe8;
+  font-weight:bold;
+  text-shadow:0 0 12px rgba(244,114,182,0.7);
+}
+
+.assinatura-filme{
+  margin-top:18px;
+  color:#ffe4e6;
+  font-weight:bold;
+  font-size:1.1em;
+}
+
+@media(max-width:600px){
+  #filme{
+    padding:32px 10px 60px;
+  }
+  #filme h1{
+    font-size:1.7em;
+  }
+  .filme-caixa{
+    padding:10px;
+    border-radius:20px;
+  }
+  .video-filme{
+    border-radius:16px;
+    max-height:72vh;
+  }
+  .filme-texto{
+    padding:20px;
+    font-size:0.98em;
+  }
+}
+
 </style>
 </head>
 
@@ -686,6 +803,7 @@ body{
   <button onclick="abrirPagina('croche')">2 - Tenho algo para você</button>
   <button onclick="abrirPagina('sonho')">3 - Vamos sonhar</button>
   <button onclick="abrirPagina('razoes')">4 - Razões entre Razões 💕</button>
+  <button onclick="abrirPagina('filme')">5 - Nosso Filme 🎬❤️</button>
   <button onclick="abrirSegredo()">🔐 Caixinha Secreta</button>
 </div>
 
@@ -1038,6 +1156,48 @@ Eu te amo, meu cuscuz. ❤️
 
 </div>
 
+
+<!-- ABA NOSSO FILME -->
+<div class="pagina" id="filme">
+  <h1>🎬 Nosso Filme: um pedaço vivo do nosso amor ❤️</h1>
+
+  <p class="filme-subtitulo">
+    Tem lembranças que não cabem só em fotos, nem em frases soltas ao vento. Elas precisam de movimento,
+    de som, de pausa, de olhar. Fiz este video Este vídeo guarda um pedacinho da nossa caminhada: os sorrisos,
+    os abraços, as brincadeiras, os momentos simples e tudo aquilo que, aos poucos, foi virando amor.
+  </p>
+
+  <div class="filme-caixa">
+    <video id="video-filme" class="video-filme" controls playsinline preload="metadata">
+      <source src="meucuscuz.mp4" type="video/mp4">
+      Seu navegador não conseguiu carregar este vídeo.
+    </video>
+  </div>
+
+  <div class="filme-texto">
+    <p>
+      Meu amor, este não é só um vídeo. É uma forma de te mostrar que cada segundo ao seu lado
+      tem valor para mim. Cada imagem carrega um motivo para sorrir, cada detalhe me lembra o quanto
+      é bonito viver algo verdadeiro com você.
+    </p>
+
+    <p>
+      Quando o áudio começar e as lembranças passarem pela tela, quero que você sinta o que talvez
+      eu nem sempre consiga explicar com perfeição: <span class="filme-detalhe">você é amada, escolhida,
+      admirada e guardada no lugar mais bonito do meu coração.</span>
+    </p>
+
+    <p>
+      Que esse filme seja um abraço em forma de lembrança. Um lembrete de que o nosso amor existe
+      nos dias grandes, nos dias simples, nos risos, no cuidado e em tudo que ainda vamos viver.
+    </p>
+
+    <div class="assinatura-filme">
+      Eu te amo, meu cuscuz. Hoje, amanhã e em todos os capítulos que ainda virão. ❤️
+    </div>
+  </div>
+</div>
+
 <!-- PÁGINA SECRETA -->
 <div class="pagina" id="segredo">
   <h1>🔐 Você encontrou nosso cantinho secreto</h1>
@@ -1188,9 +1348,18 @@ function abrirPagina(id){
   }
 });
 
+  // Se o vídeo do nosso filme estiver tocando e a pessoa mudar de aba, ele para
+  let videoFilme = document.getElementById("video-filme");
+  if(videoFilme){
+    videoFilme.pause();
+    videoFilme.currentTime = 0;
+  }
+
   document.getElementById(id).style.display = "block";
   document.querySelector(".voltar").style.display = "flex";
-  document.querySelector(".controle-musica").style.display = "flex";
+
+  // Na aba do filme, o áudio vem do próprio vídeo, então escondemos o botão de música
+  document.querySelector(".controle-musica").style.display = id === "filme" ? "none" : "flex";
 
   // tocar música base (história só toca ao escolher o mês)
 if(id === "croche"){
@@ -1214,6 +1383,10 @@ if(id === "razoes"){
 }
 if(id === "segredo"){
   mudarFraseSecreta();
+}
+
+if(id === "filme"){
+  musicaAtual = null;
 }
 if(id === "segredo"){
   musicaAtual = m6;
@@ -1450,6 +1623,13 @@ function voltarMenu(){
     audio.pause();
     audio.currentTime = 0;
   });
+
+  let videoFilme = document.getElementById("video-filme");
+  if(videoFilme){
+    videoFilme.pause();
+    videoFilme.currentTime = 0;
+  }
+
   musicaAtual = null;
   document.querySelector(".voltar").style.display = "none";
   document.querySelector(".controle-musica").style.display = "none";
@@ -1560,4 +1740,3 @@ function alternarVideoSecreto(video){
 
 </body>
 </html>
-
