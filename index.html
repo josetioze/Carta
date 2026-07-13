@@ -783,6 +783,167 @@ body{
   }
 }
 
+
+/* ===== FORMULÁRIO ANTES DE ABRIR O SITE ===== */
+#formulario-inicial{
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100vh;
+  background:radial-gradient(circle at top,#831843,#1e1b4b,#020617);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  z-index:25;
+  padding:20px;
+  box-sizing:border-box;
+  overflow-y:auto;
+}
+
+#formulario-inicial::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 20% 15%,rgba(255,255,255,0.16),transparent 25%),
+    radial-gradient(circle at 80% 10%,rgba(244,114,182,0.23),transparent 30%),
+    radial-gradient(circle at 50% 90%,rgba(255,77,109,0.18),transparent 35%);
+  pointer-events:none;
+}
+
+.formulario-caixa{
+  position:relative;
+  z-index:2;
+  width:100%;
+  max-width:820px;
+  background:rgba(255,255,255,0.10);
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:30px;
+  padding:30px;
+  box-shadow:0 18px 55px rgba(0,0,0,0.58),0 0 35px rgba(236,72,153,0.24);
+  text-align:center;
+  animation:aparecerFormulario 0.8s ease;
+  backdrop-filter:blur(8px);
+}
+
+.formulario-caixa h1{
+  color:#f9a8d4;
+  text-shadow:0 0 22px #ec4899;
+  margin-bottom:15px;
+  font-size:2em;
+}
+
+.formulario-caixa h2{
+  color:#fecdd3;
+  margin:18px 0;
+  font-size:1.35em;
+}
+
+.formulario-caixa p{
+  color:#ffe4e6;
+  line-height:1.7;
+  font-size:1.05em;
+  max-width:720px;
+  margin:12px auto;
+}
+
+.formulario-caixa iframe{
+  width:100%;
+  height:620px;
+  border:none;
+  border-radius:18px;
+  background:white;
+  margin-top:18px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.38);
+}
+
+.formulario-acoes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  justify-content:center;
+  align-items:center;
+  margin-top:25px;
+}
+
+.btn-abrir-site,
+.btn-form-link{
+  padding:15px 30px;
+  border:none;
+  border-radius:30px;
+  color:white;
+  font-size:1.02em;
+  font-weight:bold;
+  cursor:pointer;
+  box-shadow:0 8px 25px rgba(225,29,72,0.45);
+  transition:0.3s;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.btn-abrir-site{
+  background:linear-gradient(135deg,#fb7185,#e11d48);
+}
+
+.btn-form-link{
+  background:linear-gradient(135deg,#a855f7,#7e22ce);
+}
+
+.btn-abrir-site:hover,
+.btn-form-link:hover{
+  transform:scale(1.05);
+}
+
+.aviso-formulario{
+  font-size:0.9em !important;
+  opacity:0.88;
+  color:#fce7f3 !important;
+  margin-top:15px !important;
+}
+
+@keyframes aparecerFormulario{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@media(max-width:600px){
+  #formulario-inicial{
+    padding:12px;
+    align-items:flex-start;
+  }
+
+  .formulario-caixa{
+    padding:22px 14px;
+    border-radius:24px;
+    margin:15px auto;
+  }
+
+  .formulario-caixa h1{
+    font-size:1.55em;
+  }
+
+  .formulario-caixa h2{
+    font-size:1.1em;
+  }
+
+  .formulario-caixa iframe{
+    height:560px;
+  }
+
+  .btn-abrir-site,
+  .btn-form-link{
+    width:92%;
+    padding:14px 18px;
+    font-size:0.95em;
+  }
+}
+
 </style>
 </head>
 
@@ -795,7 +956,46 @@ body{
   <h1 class="coracao-pulsando">❤️</h1>
   <h2>Tenho algo guardado só para você...</h2>
   <p>Um pedacinho do nosso universo, feito com amor e carinho</p>
-  <button onclick="abrirSite()">Abrir a surpresa 💌</button>
+  <button onclick="mostrarFormularioInicial()">Abrir a surpresa 💌</button>
+</div>
+
+<!-- FORMULÁRIO ANTES DE ABRIR O SITE -->
+<div id="formulario-inicial">
+  <div class="formulario-caixa">
+    <h1>Antes de entrar no nosso universo... ❤️</h1>
+
+    <p>
+      Meu amor, antes de abrir essa surpresa, eu queria guardar uma resposta sua.
+      Não precisa ser perfeita, só precisa ser sua. Responde com o coração:
+    </p>
+
+    <h2>Por que você está acessando este site agora?</h2>
+
+    <iframe
+      src="https://forms.gle/RT2VXmP5rFLL8U679"
+      width="100%"
+      height="620"
+      frameborder="0"
+      marginheight="0"
+      marginwidth="0">
+      Carregando…
+    </iframe>
+
+    <p class="aviso-formulario">
+      Depois de enviar sua resposta no formulário, toque no botão abaixo para abrir a surpresa.
+      Se o formulário não aparecer, use o botão roxo para abrir em outra aba.
+    </p>
+
+    <div class="formulario-acoes">
+      <a class="btn-form-link" href="https://forms.gle/RT2VXmP5rFLL8U679" target="_blank" rel="noopener">
+        Abrir formulário em outra aba 💌
+      </a>
+
+      <button class="btn-abrir-site" onclick="liberarSiteDepoisDoForms()">
+        Já respondi, abrir minha surpresa ❤️
+      </button>
+    </div>
+  </div>
 </div>
 
 <!-- MENU -->
@@ -1160,11 +1360,11 @@ Eu te amo, meu cuscuz. ❤️
 
 <!-- ABA NOSSO FILME -->
 <div class="pagina" id="filme">
-  <h1>🎬 Nosso Filme: um pedaço vivo da nossa jornada ❤️</h1>
+  <h1>🎬 Nosso Filme: um pedaço vivo do nosso amor ❤️</h1>
 
   <p class="filme-subtitulo">
-    Tem lembranças que não cabem só em fotos, nem em frases soltas ao vento. Elas precisam de movimento,
-    de som, pausa e olhar. Aqui está um pouquinho de nossa caminhada juntos: os sorrisos,
+    Tem lembranças que não cabem só em fotos, nem em frases soltas. Elas precisam de movimento,
+    de som, de pausa, de olhar. Este vídeo guarda um pedacinho da nossa caminhada: os sorrisos,
     os abraços, as brincadeiras, os momentos simples e tudo aquilo que, aos poucos, foi virando amor.
   </p>
 
@@ -1181,14 +1381,14 @@ Eu te amo, meu cuscuz. ❤️
 
   <div class="filme-texto">
     <p>
-      Meu amor, aqui não representa só um video, é uma forma de te mostrar que cada segundo ao seu lado
-      tem um grande valor. Cada imagem carrega um motivo para sorrir, cada detalhe me lembra o quanto
+      Meu amor, este não é só um vídeo. É uma forma de te mostrar que cada segundo ao seu lado
+      tem valor para mim. Cada imagem carrega um motivo para sorrir, cada detalhe me lembra o quanto
       é bonito viver algo verdadeiro com você.
     </p>
 
     <p>
-      Quando o áudio começar e os bons momentos passarem pela tela, quero que você sinta o que talvez
-      eu nem sempre consiga explicar com perfeição ou delicadeza: <span class="filme-detalhe">você é amada, escolhida,
+      Quando o áudio começar e as lembranças passarem pela tela, quero que você sinta o que talvez
+      eu nem sempre consiga explicar com perfeição: <span class="filme-detalhe">você é amada, escolhida,
       admirada e guardada no lugar mais bonito do meu coração.</span>
     </p>
 
@@ -1198,17 +1398,7 @@ Eu te amo, meu cuscuz. ❤️
     </p>
 
     <div class="assinatura-filme">
-        Sei que posso estar sendo exagerado, vou continuar sendo assim!
-        Possa ser que no futuro eu mude, não por vontade propria, e sim por ter incertezas de como será a caminhada do futuro.
-        Por isso, sempre que me der vontade de fazer algo, vou fazer, não por estarmos no inicio do relacionamento, por no começo ser flores e depois
-        tudo muda. Como ja falei anteriormente, o futuro é incerto, o eu de agora está fazendo estas coisas, mas o eu de amanha não sabe se terá 
-        tempo ou oportunidade de continuar elaborando estes caprixos. Enquanto puder fazer vou desenvolver e nutrir este ambiente.
-        Sei que toda vez que voçe entra aqui, não tem mais aquele sentimento como foi a primeira vez em ve-lo. Mas pesso encarecidamente
-        que nunca esqueça este ambiente, não busque nele o sentimento que sentiu anteriormente, aquele momento foi um tempo e maneira de pensar diferente de agora.
-        Sendo assim, a cad vez que vinher a este espaço, se permita a sonhar e perceber o quão magnífica é sua persona, permitasse ser livre para novos pensamentos
-        para que a cada visita, tanto agora quanto no futuro, seja repleta de alegria e não da busca por um sentimento antigo.
-
-        Eu te amo, meu cuscuz. Amei ontem, amo hoje e no amanhã, terei uma nova forma de te amar, como ira de acontecer em todos os capítulos que ainda virão. ❤️
+      Eu te amo, meu cuscuz. Hoje, amanhã e em todos os capítulos que ainda virão. ❤️
     </div>
   </div>
 </div>
@@ -1740,6 +1930,31 @@ function alternarVideoSecreto(video){
     video.pause();
   }
 }
+
+function mostrarFormularioInicial(){
+
+  const carta = document.getElementById("carta");
+  const formulario = document.getElementById("formulario-inicial");
+
+  if(carta) carta.style.display = "none";
+  if(formulario) formulario.style.display = "flex";
+}
+
+function liberarSiteDepoisDoForms(){
+
+  const confirmar = confirm("Você já respondeu a pergunta com o coração? ❤️");
+
+  if(confirmar){
+    const formulario = document.getElementById("formulario-inicial");
+    if(formulario) formulario.style.display = "none";
+
+    document.getElementById("menu").style.display = "block";
+
+    atualizarContador();
+    atualizarTitulo();
+  }
+}
+
   window.abrirPagina = abrirPagina;
   window.abrirSite = abrirSite;
   window.abrirMes = abrirMes;
@@ -1750,6 +1965,8 @@ function alternarVideoSecreto(video){
   window.alternarMusica = alternarMusica;
   window.mudarFraseSecreta = mudarFraseSecreta;
   window.alternarVideoSecreto = alternarVideoSecreto;
+  window.mostrarFormularioInicial = mostrarFormularioInicial;
+  window.liberarSiteDepoisDoForms = liberarSiteDepoisDoForms;
 });
 </script>
 
