@@ -983,16 +983,54 @@ body{
   opacity:0.85;
 }
 
-.video-mes-atual{
+/* Moldura do vídeo do Mês Atual
+   Aqui você controla o enquadramento do vídeo sem mexer na estrutura da aba. */
+.video-mes-frame{
   width:100%;
   max-width:650px;
   aspect-ratio:9/16;
+  margin:20px auto 0;
+  background:#000;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 12px 35px rgba(0,0,0,0.45);
+  border:2px solid rgba(93,58,0,0.18);
+}
+
+.video-mes-atual{
+  width:100%;
+  height:100%;
+  max-width:none;
   background:#000;
   border:none;
-  border-radius:22px;
-  box-shadow:0 12px 35px rgba(0,0,0,0.45);
-  margin-top:20px;
+  border-radius:0;
   outline:none;
+  display:block;
+  object-fit:cover;
+  object-position:center center;
+}
+
+/* Mostra o vídeo inteiro, mas pode sobrar faixa preta se o arquivo não estiver na proporção certa. */
+.video-mes-frame.conter .video-mes-atual{
+  object-fit:contain;
+}
+
+/* Preenche a moldura 9:16. É o melhor para vídeos verticais. */
+.video-mes-frame.preencher .video-mes-atual{
+  object-fit:cover;
+}
+
+/* Dá zoom para esconder faixas pretas quando o vídeo foi exportado com bordas. */
+.video-mes-frame.zoom .video-mes-atual{
+  object-fit:cover;
+  transform:scale(var(--zoom-video-mes,1.45));
+  transform-origin:center center;
+}
+
+/* Use este modo se algum vídeo for horizontal. */
+.video-mes-frame.horizontal{
+  aspect-ratio:16/9;
+  max-width:760px;
 }
 
 @media(max-width:600px){
@@ -1005,7 +1043,7 @@ body{
     font-size:1.25em;
   }
 
-  .video-mes-atual{
+  .video-mes-frame{
     max-width:95%;
     border-radius:18px;
   }
@@ -1744,7 +1782,17 @@ if(id === "segredo"){
 */
 const configuracaoMesAtual = {
   modo: "video",        // opções: "fotos" ou "video"
-  tipoVideo: "youtube",  // opções: "local" ou "youtube"
+  tipoVideo: "local",  // opções: "local" ou "youtube"
+
+  /* ===== ENQUADRAMENTO DO VÍDEO DO MÊS ATUAL =====
+     "preencher"  = preenche a moldura vertical 9:16.
+     "conter"     = mostra o vídeo inteiro, mesmo que sobrem faixas.
+     "zoom"       = aproxima o vídeo para esconder bordas/faixas pretas.
+     "horizontal" = usa moldura 16:9 para vídeos deitados.
+  */
+  enquadramentoVideo: "zoom",
+  zoomVideo: 1.75,
+  posicaoVideo: "center center",
 
   // Use este nome quando o vídeo estiver na mesma pasta do HTML.
   videoLocal: "mes-atual-video.mp4",
@@ -1752,7 +1800,7 @@ const configuracaoMesAtual = {
   // Use apenas o ID quando o vídeo estiver no YouTube.
   // Exemplo de link: https://youtu.be/ABC123
   // O ID seria: ABC123
-  youtubeId: "Rh6o6tFP9Qo",
+  youtubeId: "",
 
   tituloVideo: "Um recado com a minha voz para você ❤️",
   textoVideo: "Neste mês, eu quis deixar algo ainda mais meu: minha voz, meu carinho e cada palavra pensada para tocar seu coração."
@@ -1823,12 +1871,25 @@ window.onYouTubeIframeAPIReady = function(){
 ativarLoopVideosLocais();
 carregarApiYoutube();
 
+function obterClasseEnquadramentoMesAtual(){
+  const tipo = (configuracaoMesAtual.enquadramentoVideo || "preencher").trim().toLowerCase();
+
+  if(tipo === "conter") return "conter";
+  if(tipo === "zoom") return "zoom";
+  if(tipo === "horizontal") return "horizontal";
+  return "preencher";
+}
+
 function montarPlayerVideoMesAtual(){
   const player = document.getElementById("playerVideoMesAtual");
   const titulo = document.getElementById("tituloVideoMesAtual");
   const texto = document.getElementById("textoVideoMesAtual");
 
   if(!player) return;
+
+  const classeEnquadramento = obterClasseEnquadramentoMesAtual();
+  const zoomVideo = configuracaoMesAtual.zoomVideo || 1.45;
+  const posicaoVideo = configuracaoMesAtual.posicaoVideo || "center center";
 
   if(titulo) titulo.innerText = configuracaoMesAtual.tituloVideo;
   if(texto) texto.innerText = configuracaoMesAtual.textoVideo;
@@ -1838,28 +1899,33 @@ function montarPlayerVideoMesAtual(){
 
   if(configuracaoMesAtual.tipoVideo === "youtube" && configuracaoMesAtual.youtubeId.trim() !== ""){
     player.innerHTML = `
-      <iframe
-        id="youtubeMesAtual"
-        class="video-mes-atual"
-        src="https://www.youtube.com/embed/${configuracaoMesAtual.youtubeId.trim()}?rel=0&loop=1&playlist=${configuracaoMesAtual.youtubeId.trim()}&enablejsapi=1&playsinline=1"
-        title="Vídeo do mês atual"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
+      <div class="video-mes-frame ${classeEnquadramento}" style="--zoom-video-mes:${zoomVideo};">
+        <iframe
+          id="youtubeMesAtual"
+          class="video-mes-atual"
+          src="https://www.youtube.com/embed/${configuracaoMesAtual.youtubeId.trim()}?rel=0&loop=1&playlist=${configuracaoMesAtual.youtubeId.trim()}&enablejsapi=1&playsinline=1"
+          title="Vídeo do mês atual"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen>
+        </iframe>
+      </div>
     `;
   }else{
     player.innerHTML = `
-      <video
-        id="videoMesAtual"
-        class="video-mes-atual"
-        controls
-        loop
-        playsinline
-        preload="metadata">
-        <source src="${configuracaoMesAtual.videoLocal}" type="video/mp4">
-        Seu navegador não conseguiu carregar este vídeo.
-      </video>
+      <div class="video-mes-frame ${classeEnquadramento}" style="--zoom-video-mes:${zoomVideo};">
+        <video
+          id="videoMesAtual"
+          class="video-mes-atual"
+          style="object-position:${posicaoVideo};"
+          controls
+          loop
+          playsinline
+          preload="metadata">
+          <source src="${configuracaoMesAtual.videoLocal}" type="video/mp4">
+          Seu navegador não conseguiu carregar este vídeo.
+        </video>
+      </div>
     `;
   }
 
