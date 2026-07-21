@@ -944,6 +944,73 @@ body{
   }
 }
 
+/* ===== MÊS ATUAL: ESCOLHER FOTOS OU VÍDEO ===== */
+
+#areaFotosMesAtual,
+#areaVideoMesAtual{
+  position:relative;
+  z-index:2;
+}
+
+.video-mes-caixa{
+  max-width:760px;
+  margin:30px auto;
+  padding:25px;
+  background:linear-gradient(160deg,#FFF8E1,#FFF3CD);
+  color:#3e2000;
+  border-radius:25px;
+  box-shadow:0 12px 40px rgba(255,193,7,0.45);
+  border:1px solid rgba(93,58,0,0.15);
+}
+
+.video-mes-caixa h2{
+  color:#5d3a00;
+  margin-bottom:15px;
+  font-size:1.6em;
+}
+
+.video-mes-caixa p{
+  color:#4a2800;
+  font-weight:600;
+  line-height:1.7;
+  margin:12px auto;
+  max-width:650px;
+}
+
+.video-mes-aviso{
+  margin-top:16px !important;
+  font-size:0.92em;
+  opacity:0.85;
+}
+
+.video-mes-atual{
+  width:100%;
+  max-width:650px;
+  aspect-ratio:9/16;
+  background:#000;
+  border:none;
+  border-radius:22px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.45);
+  margin-top:20px;
+  outline:none;
+}
+
+@media(max-width:600px){
+  .video-mes-caixa{
+    padding:18px 12px;
+    border-radius:20px;
+  }
+
+  .video-mes-caixa h2{
+    font-size:1.25em;
+  }
+
+  .video-mes-atual{
+    max-width:95%;
+    border-radius:18px;
+  }
+}
+
 </style>
 </head>
 
@@ -1100,51 +1167,81 @@ body{
 
   <h2>Nosso Mês Mágico ⭐</h2>
 
-  <div class="slide historiaSlideAtual">
-    <img src="u1.jpeg">
-    <p>meu Deus, como é bom amar você!</p>
+  <!--
+    CONFIGURAÇÃO SIMPLES:
+    Para escolher se este mês mostra FOTOS ou VÍDEO, vá no JavaScript e mude:
+    modo: "fotos"  ou  modo: "video"
+  -->
+
+  <!-- ÁREA DAS FOTOS DO MÊS ATUAL -->
+  <div id="areaFotosMesAtual">
+
+    <div class="slide historiaSlideAtual">
+      <img src="u1.jpeg">
+      <p>meu Deus, como é bom amar você!</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u2.jpeg">
+      <p>pessoa que sente muito frio + pessoa que sente calor= namorados 💌💘</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u3.jpeg">
+      <p>se eu pudesse, dormiria assim todos os dias… 🥹</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u4.jpeg">
+      <p>o evento mais esperado, “700km de forró” hahahaha</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u5.jpeg">
+      <p>amo quando não tira os olhos de mim</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u6.jpeg">
+      <p>sou feliz por ser feliz com vc e vc ser feliz comigo</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u7.jpeg">
+      <p>meu melhor amigo, companheiro, confidente, namorado e meu futuro marido, te amo!!!</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u8.jpeg">
+      <p>uma caminhada com um açaí pra comemorar nosso dia 9, se tornou a minha data favorita! 🤍</p>
+    </div>
+
+    <div class="slide historiaSlideAtual">
+      <img src="u9.jpeg">
+      <p>não sei quem tava mais cansado depos dos 700 km de forro</p>
+    </div>
+
   </div>
 
-  <div class="slide historiaSlideAtual">
-    <img src="u2.jpeg">
-    <p>pessoa que sente muito frio + pessoa que sente calor= namorados 💌💘</p>
-  </div>
+  <!-- ÁREA DO VÍDEO DO MÊS ATUAL -->
+  <div id="areaVideoMesAtual" style="display:none;">
 
-  <div class="slide historiaSlideAtual">
-    <img src="u3.jpeg">
-    <p>se eu pudesse, dormiria assim todos os dias… 🥹</p>
-  </div>
+    <div class="video-mes-caixa">
+      <h2 id="tituloVideoMesAtual">Um recado com a minha voz para você ❤️</h2>
 
-  <div class="slide historiaSlideAtual">
-    <img src="u4.jpeg">
-    <p>o evento mais esperado, “700km de forró” hahahaha</p>
-  </div>
+      <p id="textoVideoMesAtual">
+        Neste mês, eu quis deixar algo ainda mais meu: minha voz, meu carinho e cada palavra
+        pensada para tocar seu coração.
+      </p>
 
-  <div class="slide historiaSlideAtual">
-    <img src="u5.jpeg">
-    <p>amo quando não tira os olhos de mim</p>
-  </div>
+      <div id="playerVideoMesAtual"></div>
 
-  <div class="slide historiaSlideAtual">
-    <img src="u6.jpeg">
-    <p>sou feliz por ser feliz com vc e vc ser feliz comigo</p>
-  </div>
+      <p class="video-mes-aviso">
+        Aperte o play quando estiver pronta. Esse momento foi feito para ser sentido com calma. 💛
+      </p>
+    </div>
 
-  <div class="slide historiaSlideAtual">
-    <img src="u7.jpeg">
-    <p>meu melhor amigo, companheiro, confidente, namorado e meu futuro marido, te amo!!!</p>
   </div>
-
-  <div class="slide historiaSlideAtual">
-    <img src="u8.jpeg">
-    <p>uma caminhada com um açaí pra comemorar nosso dia 9, se tornou a minha data favorita! 🤍</p>
-  </div>
-    
-  <div class="slide historiaSlideAtual">
-    <img src="u9.jpeg">
-    <p>não sei quem tava mais cansado depos dos 700 km de forro</p>
-  </div>
-
 
 </div>
 
@@ -1538,6 +1635,8 @@ function abrirPagina(id){
 
   document.getElementById("menu").style.display = "none";
 
+  pararVideoMesAtual();
+
   // músicas
   let m1 = document.getElementById("musica");
   let m2 = document.getElementById("musica2");
@@ -1620,6 +1719,116 @@ if(id === "segredo"){
   document.getElementById("conteudoHistoria").style.display = "none";
 }
 }
+
+/* ===== CONFIGURAÇÃO DO MÊS ATUAL: FOTOS OU VÍDEO =====
+   Aqui você troca só uma palavra para alternar o mês atual.
+
+   Para mostrar as fotos:
+   modo: "fotos"
+
+   Para mostrar um vídeo com sua voz:
+   modo: "video"
+
+   Se o vídeo for arquivo MP4 na pasta do site:
+   tipoVideo: "local"
+   videoLocal: "mes-atual-video.mp4"
+
+   Se o vídeo estiver no YouTube:
+   tipoVideo: "youtube"
+   youtubeId: "ID_DO_VIDEO"
+*/
+const configuracaoMesAtual = {
+  modo: "fotos",        // opções: "fotos" ou "video"
+  tipoVideo: "local",  // opções: "local" ou "youtube"
+
+  // Use este nome quando o vídeo estiver na mesma pasta do HTML.
+  videoLocal: "mes-atual-video.mp4",
+
+  // Use apenas o ID quando o vídeo estiver no YouTube.
+  // Exemplo de link: https://youtu.be/ABC123
+  // O ID seria: ABC123
+  youtubeId: "",
+
+  tituloVideo: "Um recado com a minha voz para você ❤️",
+  textoVideo: "Neste mês, eu quis deixar algo ainda mais meu: minha voz, meu carinho e cada palavra pensada para tocar seu coração."
+};
+
+function montarPlayerVideoMesAtual(){
+  const player = document.getElementById("playerVideoMesAtual");
+  const titulo = document.getElementById("tituloVideoMesAtual");
+  const texto = document.getElementById("textoVideoMesAtual");
+
+  if(!player) return;
+
+  if(titulo) titulo.innerText = configuracaoMesAtual.tituloVideo;
+  if(texto) texto.innerText = configuracaoMesAtual.textoVideo;
+
+  player.innerHTML = "";
+
+  if(configuracaoMesAtual.tipoVideo === "youtube" && configuracaoMesAtual.youtubeId.trim() !== ""){
+    player.innerHTML = `
+      <iframe
+        class="video-mes-atual"
+        src="https://www.youtube.com/embed/${configuracaoMesAtual.youtubeId.trim()}?rel=0"
+        title="Vídeo do mês atual"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+    `;
+  }else{
+    player.innerHTML = `
+      <video
+        id="videoMesAtual"
+        class="video-mes-atual"
+        controls
+        playsinline
+        preload="metadata">
+        <source src="${configuracaoMesAtual.videoLocal}" type="video/mp4">
+        Seu navegador não conseguiu carregar este vídeo.
+      </video>
+    `;
+  }
+}
+
+function pararVideoMesAtual(){
+  const video = document.getElementById("videoMesAtual");
+  if(video){
+    video.pause();
+    video.currentTime = 0;
+  }
+
+  const player = document.getElementById("playerVideoMesAtual");
+  if(player && configuracaoMesAtual.tipoVideo === "youtube"){
+    player.innerHTML = "";
+  }
+}
+
+function configurarMesAtual(){
+  const areaFotos = document.getElementById("areaFotosMesAtual");
+  const areaVideo = document.getElementById("areaVideoMesAtual");
+
+  if(!areaFotos || !areaVideo) return;
+
+  clearTimeout(timerAtual);
+
+  document.querySelectorAll(".historiaSlideAtual").forEach(slide => {
+    slide.style.display = "none";
+  });
+
+  if(configuracaoMesAtual.modo === "video"){
+    areaFotos.style.display = "none";
+    areaVideo.style.display = "block";
+    montarPlayerVideoMesAtual();
+  }else{
+    areaVideo.style.display = "none";
+    areaFotos.style.display = "block";
+    pararVideoMesAtual();
+    slideAtual = 0;
+    slidesAtual();
+  }
+}
+
 /* ===== SUBMENU MESES ===== */
 
 function abrirMes(id){
@@ -1660,12 +1869,18 @@ function abrirMes(id){
 
   // Mês atual
   if(id === "mesAtual"){
-    slideAtual = 0;
-    slidesAtual();
+    configurarMesAtual();
 
-    musicaAtual = m5;
-    musicaAtual.play().catch(()=>{});
-    document.querySelector(".controle-musica").innerText = "🔊";
+    if(configuracaoMesAtual.modo === "fotos"){
+      musicaAtual = m5;
+      musicaAtual.play().catch(()=>{});
+      document.querySelector(".controle-musica").innerText = "🔊";
+    }
+
+    if(configuracaoMesAtual.modo === "video"){
+      musicaAtual = null;
+      document.querySelector(".controle-musica").innerText = "🔇";
+    }
   }
 
 
@@ -1693,11 +1908,17 @@ let timerAtual = null;
 
 function slidesAtual(){
   clearTimeout(timerAtual);
+
+  if(configuracaoMesAtual.modo !== "fotos") return;
+
   let slides = document.getElementsByClassName("historiaSlideAtual");
   if(slides.length === 0) return;
+
   for(let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+
   slideAtual++;
   if(slideAtual > slides.length) slideAtual = 1;
+
   slides[slideAtual - 1].style.display = "block";
   timerAtual = setTimeout(slidesAtual, 8000);
 }
@@ -1836,6 +2057,7 @@ function voltarMenu(){
   }
 
   musicaAtual = null;
+  pararVideoMesAtual();
   document.querySelector(".voltar").style.display = "none";
   document.querySelector(".controle-musica").style.display = "none";
 }
@@ -1967,6 +2189,8 @@ function liberarSiteDepoisDoForms(){
   window.alternarVideoSecreto = alternarVideoSecreto;
   window.mostrarFormularioInicial = mostrarFormularioInicial;
   window.liberarSiteDepoisDoForms = liberarSiteDepoisDoForms;
+  window.configurarMesAtual = configurarMesAtual;
+  window.pararVideoMesAtual = pararVideoMesAtual;
 });
 </script>
 
