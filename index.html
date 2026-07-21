@@ -1467,8 +1467,9 @@ Eu te amo, meu cuscuz. ❤️
 
   <div class="filme-caixa">
     <iframe 
+      id="youtubeFilme"
       class="video-filme"
-      src="https://www.youtube.com/embed/pJjGQ6g2J6Y?rel=0"
+      src="https://www.youtube.com/embed/pJjGQ6g2J6Y?rel=0&loop=1&playlist=pJjGQ6g2J6Y&enablejsapi=1&playsinline=1"
       title="Nosso Filme"
       frameborder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1691,6 +1692,8 @@ if(id === "segredo"){
 
 if(id === "filme"){
   musicaAtual = null;
+  carregarApiYoutube();
+  setTimeout(inicializarLoopsYoutube, 700);
 }
 if(id === "segredo"){
   musicaAtual = m6;
@@ -1736,6 +1739,8 @@ if(id === "segredo"){
    Se o vídeo estiver no YouTube:
    tipoVideo: "youtube"
    youtubeId: "ID_DO_VIDEO"
+
+   Os vídeos foram configurados para ficar em loop automaticamente.
 */
 const configuracaoMesAtual = {
   modo: "fotos",        // opções: "fotos" ou "video"
@@ -1753,6 +1758,71 @@ const configuracaoMesAtual = {
   textoVideo: "Neste mês, eu quis deixar algo ainda mais meu: minha voz, meu carinho e cada palavra pensada para tocar seu coração."
 };
 
+/* ===== LOOP AUTOMÁTICO DOS VÍDEOS =====
+   Para vídeos locais, usamos o atributo loop e também um reforço em JavaScript.
+   Para YouTube, usamos loop=1 + playlist=ID e a API do YouTube para reiniciar quando terminar.
+*/
+let youtubePlayers = {};
+
+function ativarLoopVideosLocais(){
+  document.querySelectorAll("video").forEach(video => {
+    video.loop = true;
+
+    if(!video.dataset.loopForcado){
+      video.dataset.loopForcado = "true";
+
+      video.addEventListener("ended", function(){
+        this.currentTime = 0;
+        this.play().catch(()=>{});
+      });
+    }
+  });
+}
+
+function carregarApiYoutube(){
+  if(window.YT && window.YT.Player){
+    inicializarLoopsYoutube();
+    return;
+  }
+
+  if(!document.getElementById("youtube-iframe-api")){
+    const tag = document.createElement("script");
+    tag.id = "youtube-iframe-api";
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.body.appendChild(tag);
+  }
+}
+
+function registrarLoopYoutube(idIframe, chave){
+  const iframe = document.getElementById(idIframe);
+
+  if(!iframe || !window.YT || !window.YT.Player) return;
+  if(youtubePlayers[chave]) return;
+
+  youtubePlayers[chave] = new YT.Player(idIframe, {
+    events:{
+      onStateChange:function(event){
+        if(event.data === YT.PlayerState.ENDED){
+          event.target.seekTo(0);
+          event.target.playVideo();
+        }
+      }
+    }
+  });
+}
+
+function inicializarLoopsYoutube(){
+  registrarLoopYoutube("youtubeFilme", "filme");
+  registrarLoopYoutube("youtubeMesAtual", "mesAtual");
+}
+
+window.onYouTubeIframeAPIReady = function(){
+  inicializarLoopsYoutube();
+};
+
+ativarLoopVideosLocais();
+carregarApiYoutube();
+
 function montarPlayerVideoMesAtual(){
   const player = document.getElementById("playerVideoMesAtual");
   const titulo = document.getElementById("tituloVideoMesAtual");
@@ -1764,12 +1834,14 @@ function montarPlayerVideoMesAtual(){
   if(texto) texto.innerText = configuracaoMesAtual.textoVideo;
 
   player.innerHTML = "";
+  delete youtubePlayers.mesAtual;
 
   if(configuracaoMesAtual.tipoVideo === "youtube" && configuracaoMesAtual.youtubeId.trim() !== ""){
     player.innerHTML = `
       <iframe
+        id="youtubeMesAtual"
         class="video-mes-atual"
-        src="https://www.youtube.com/embed/${configuracaoMesAtual.youtubeId.trim()}?rel=0"
+        src="https://www.youtube.com/embed/${configuracaoMesAtual.youtubeId.trim()}?rel=0&loop=1&playlist=${configuracaoMesAtual.youtubeId.trim()}&enablejsapi=1&playsinline=1"
         title="Vídeo do mês atual"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -1782,6 +1854,7 @@ function montarPlayerVideoMesAtual(){
         id="videoMesAtual"
         class="video-mes-atual"
         controls
+        loop
         playsinline
         preload="metadata">
         <source src="${configuracaoMesAtual.videoLocal}" type="video/mp4">
@@ -1789,6 +1862,10 @@ function montarPlayerVideoMesAtual(){
       </video>
     `;
   }
+
+  ativarLoopVideosLocais();
+  carregarApiYoutube();
+  setTimeout(inicializarLoopsYoutube, 700);
 }
 
 function pararVideoMesAtual(){
@@ -1801,6 +1878,7 @@ function pararVideoMesAtual(){
   const player = document.getElementById("playerVideoMesAtual");
   if(player && configuracaoMesAtual.tipoVideo === "youtube"){
     player.innerHTML = "";
+    delete youtubePlayers.mesAtual;
   }
 }
 
@@ -2191,6 +2269,9 @@ function liberarSiteDepoisDoForms(){
   window.liberarSiteDepoisDoForms = liberarSiteDepoisDoForms;
   window.configurarMesAtual = configurarMesAtual;
   window.pararVideoMesAtual = pararVideoMesAtual;
+  window.ativarLoopVideosLocais = ativarLoopVideosLocais;
+  window.carregarApiYoutube = carregarApiYoutube;
+  window.inicializarLoopsYoutube = inicializarLoopsYoutube;
 });
 </script>
 
