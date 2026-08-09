@@ -1633,20 +1633,28 @@ function abrirSite(){
   },700);
 }
 /* ===== CONTADOR ===== */
-const dataInicio = new Date("2026-02-09");
+
+// 09 de fevereiro de 2026, à meia-noite, no horário local
+const dataInicio = new Date(2026, 1, 9, 0, 0, 0);
 
 function atualizarContador(){
   const agora = new Date();
-  const diff  = agora - dataInicio;
-  const dias     = Math.floor(diff/(1000*60*60*24));
-  const horas    = Math.floor((diff/(1000*60*60))%24);
-  const minutos  = Math.floor((diff/(1000*60))%60);
-  const segundos = Math.floor((diff/1000)%60);
+  const diff = agora - dataInicio;
+
+  const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+  const minutos = Math.floor((diff / (1000 * 60)) % 60);
+  const segundos = Math.floor((diff / 1000) % 60);
+
   document.getElementById("tempo").innerHTML =
-    dias+" dias "+horas+"h "+minutos+"m "+segundos+"s";
+    dias + " dias " +
+    horas + "h " +
+    minutos + "m " +
+    segundos + "s";
 }
+
 atualizarContador();
-setInterval(atualizarContador,1000);
+setInterval(atualizarContador, 1000);
 
 /* ===== TÍTULO MÊS ===== */
 function atualizarTitulo(){
